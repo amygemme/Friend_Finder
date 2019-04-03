@@ -1,0 +1,25 @@
+{
+  "name": "Friend_Finder",
+  "version": "1.0.0",
+  "description": "this site will have a user fill out a survey and then match them to a friend who answered similarly",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amygemme81/Friend_Finder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amygemme81/Friend_Finder/issues"
+  },
+  "homepage": "https://github.com/amygemme81/Friend_Finder#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
