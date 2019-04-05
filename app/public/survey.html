@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href = "/../Friend_Finder/style.css"> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -21,13 +21,17 @@
 </head>
 
 <body>
-    <h1>Hello Survey World</h1>
+    <h1>Dating with Kids</h1>
     <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="name">
+        </div>
+
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">I want or have kids</label>
-                <select class="custom-select mr-sm-2" id="q1">
-                    <option selected>Choose...</option>
+                <label class="mr-sm-2" for="inlineFormCustomSelect">It is important to me that you also have a relationship with my kids</label>
+                <select class="custom-select mr-sm-2" id="q1" placeholder="name">
                     <option value="1">1 Agree Totally </option>
                     <option value="2">2 </option>
                     <option value="3">3 Meh</option>
@@ -40,9 +44,8 @@
         <div class="form-row align-items-center">
 
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">I am willing to relocate for a relationship</label>
+                <label class="mr-sm-2" for="inlineFormCustomSelect">I want to have more kids</label>
                 <select class="custom-select mr-sm-2" id="q2">
-                    <option selected>Choose...</option>
                     <option value="1">1 Agree Totally </option>
                     <option value="2">2 </option>
                     <option value="3">3 Meh</option>
@@ -54,9 +57,8 @@
         <div class="form-row align-items-center">
 
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">I am too enlightened to have a job </label>
+                <label class="mr-sm-2" for="inlineFormCustomSelect">I have a good relationship with the other parent(s) of my kids </label>
                 <select class="custom-select mr-sm-2" id="q3">
-                    <option selected>Choose...</option>
                     <option value="1">1 Agree Totally </option>
                     <option value="2">2 </option>
                     <option value="3">3 Meh</option>
@@ -94,18 +96,33 @@
 
 </html>
 
+
+
 <!-- Script Logic -->
 <script type="text/javascript">
 
     $("#submit").on("click", function (event) {
+        event.preventDefault();
         var newFriend = {
+            name: $('#name').val(),
             q1: $('#q1').val(),
             q2: $('#q2').val(),
             q3: $('#q3').val(),
         }
+        console.log("data stored in array");
         console.log(newFriend);
-    });
 
+        $.post("/friends", newFriend, function (data) {
+            console.log("data", data);
+            alert(data.name);
+            //
+        })
+            // .then(function (FriendData) {
+            //     console.log(FriendData);
+            //     //
+            // })
+
+    });
 
 
 </script>
